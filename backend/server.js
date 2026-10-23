@@ -13,12 +13,15 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// MongoDB Connection (Aap yahan apni MongoDB Atlas URI ya local connection string daal sakti hain)
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/period-tracker';
+// MongoDB Connection 
+const mongoose = require('mongoose');
+
+
+const MONGO_URI = "mongodb+srv://priyaroy7524_db_user:Priya2003@cluster0.1xb9emn.mongodb.net/periodtracker?retryWrites=true&w=majority";
 
 mongoose.connect(MONGO_URI)
-  .then(() => console.log('🗄️ MongoDB Connected Successfully!'))
-  .catch((err) => console.error('Database connection error:', err));
+  .then(() => console.log("MongoDB Database Connected Successfully! 🎉"))
+  .catch((err) => console.log("Database connection error:", err));
 
 // --- API ROUTES ---
 
