@@ -1,4 +1,3 @@
-// backend/server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -14,9 +13,6 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB Connection 
-const mongoose = require('mongoose');
-
-
 const MONGO_URI = "mongodb+srv://priyaroy7524_db_user:Priya2003@cluster0.1xb9emn.mongodb.net/periodtracker?retryWrites=true&w=majority";
 
 mongoose.connect(MONGO_URI)
@@ -33,19 +29,9 @@ app.get('/api/cycles', async (req, res) => {
     } catch (err) {
         res.status(500).json({ error: 'Server error while fetching history' });
     }
-},);
-//   Naya entry save karne ke liye)
-app.get('/api/cycles', async (req, res) => {
-    try {
-        const newCycle = new Cycle(req.body);
-        const savedCycle = await newCycle.save();
-        res.status(201).json(savedCycle);
-    } catch (err) {
-        res.status(400).json({ error: 'Failed to save cycle log' });
-    }
 });
 
-// 2. Add New Cycle Log (Isko theek karein)
+// 2. Add New Cycle Log (Naya entry save karne ke liye)
 app.post('/api/cycles', async (req, res) => {
     try {
         const newCycle = new Cycle(req.body);
@@ -58,7 +44,7 @@ app.post('/api/cycles', async (req, res) => {
 
 // Test Route
 app.get('/', (req, res) => {
-    res.write('Period Tracker Backend is Running Successfully 🌸');
+    res.send('Period Tracker Backend is Running Successfully 🌸');
 });
 
 app.listen(PORT, () => {
