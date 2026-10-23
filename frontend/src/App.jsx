@@ -19,8 +19,9 @@ import {
 } from 'lucide-react';
 
 // --- API Configuration ---
-const API_BASE_URL = 'http://localhost:5000/api/cycles';
-
+const API_BASE_URL = window.location.hostname === "localhost" 
+  ? "http://localhost:5000/api/cycles" 
+  : "https://period-tracker-y2xj.onrender.com/api/cycles";
 export default function App() {
   // Navigation State
   const [activeTab, setActiveTab] = useState('activities'); // 'activities', 'calendar', 'reports', 'settings'
